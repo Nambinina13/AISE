@@ -3,7 +3,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-struct state{
+#include <proc/readproc.h>
+struct state
+{
     char name[1000];
     char statue;
     int parentID;
@@ -19,6 +21,13 @@ struct state{
     long unsigned int pTime;
     float cpu_total_time;
     };
+
+typedef struct machine_info
+{
+  size_t size_memorie;
+  char *name;
+
+}machine_info_t;
 
 long unsigned int get_uptime();
 
