@@ -1,18 +1,18 @@
 CC=gcc
 CFLAGS= -o3
 
-all:    myhtop
+all:	myhtop
 
-myhtop: main.o  mycapteur.o
-        $(CC)   $(CFLAGS)       -o      $@      $^
+myhtop:	main.o	mycapteur.o
+	$(CC)	$(CFLAGS)	-o	$@	$^
 
-mycapteur.o: mycapteur.c        capteur.h
-        $(CC)   $(CFLAGS)       -c      -o      $@      $<
+mycapteur.o: mycapteur.c	capteur.h
+	$(CC)	$(CFLAGS)	-c	-o	$@	$<
 
 main.o: main.c  capteur.h
-        $(CC)   $(CFLAGS) -c    -o $@   $<
+	$(CC)   $(CFLAGS) -c	-o $@	$<
 
 clean:
-        rm -rf *.o      myhtop
+	rm -rf *.o	myhtop
 
 .PHONY:
