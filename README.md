@@ -61,7 +61,31 @@ get_sharedmemory_size dans cette fonction, nous lisons le fichier / proc / pid /
  
  2-après avoir eu l'UID, nous devons entrer dans le répertoire / etc et lire le fichier / etc / passwd dans ce fichier, nous pouvons voir un rapport entre le nom de l'utilisateur et l'UID, donc nous recherchons le numéro UID et sauvegardons le nom
 
+Installation:
 
+  Pour installer l'outil il suffit de recupere le source du projet dans github
+  
+  Lien: https://github.com/SulaimanMohammad/aise_project
+  
+  Depandance:
+  
+    Compilateur: gcc
+    Makefile: make pour compile le programme
+    
+   Pour execute le programme, il faut se place dans le repertoire source:
+   
+      ./myhtop  "-choix"
+      
+   Choix: Celui-ci indique indique le choix qui s'offre à l'utilisateur.
+    
+   Lancer le serveur:
+      
+        ./myhtop -s
+        
+   Lancer client
+   
+        ./myhtop -c
+  
 
 Refe
 1- https://lkml.org/lkml/2019/7/24/906
