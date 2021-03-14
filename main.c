@@ -1,17 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "capteur.h"
+#include "server.h"
+#include "client.h"
 
-int main(int argc, char **argv)
+
+#include "readprocess.h"
+
+void prise_client()
 {
+  my_client();
+}
 
-  int pid;
-  sscanf(argv[1], "%d", &pid);
+void prise_serveur()
+{
+  serveur();
+}
+void main(int argc, char **argv)
+{
+//int pids[4194303]={0};//there is no pid is zero
+  int option =0;
 
-  printf("=============================================+==================\n");
-  printf("|   PID   |   Nom   |   S   |   Time   |   CPU   |   MEM   |     \n");
-  printf("================================================================\n");
+  while ((option = getopt(argc, argv, "sc")) != -1)
+    {
+      switch (option)
+      {
+        /*client*/
+        case 'c':
+          prise_client();
+          break;
+          /*serveur*/
+        case 's':
+          prise_serveur();
+          break;
 
-  process_value(pid);
-  return 0;
+        default:
+          printf("Erreur de choix\n");
+          break;
+      }
+    }
 }

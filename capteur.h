@@ -4,33 +4,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <proc/readproc.h>
-struct state
+
+#define PROC_FLAGS (PROC_FILLMEM | PROC_FILLCOM | PROC_FILLENV | PROC_FILLUSR |PROC_FILLGRP | PROC_FILLSTAT | PROC_FILLSTATUS | PROC_EDITCMDLCVT)
+
+#define NB_MAX_PROCESS 200
+typedef struct proc_info_s
 {
-    char name[1000];
-    char statue;
-    int parentID;
-    long unsigned int utime;
-    long int cutime;
-    long unsigned int stime;
-    long int cstime;
-    long int priority;
-    long int  nice;
-    long long unsigned int starttime;
-    long unsigned int vsize; // virtual memory size in bytes
-    long unsigned int rss; //Resident  Set  Size in bytes
-    long unsigned int pTime;
-    float cpu_total_time;
-    };
+	size_t nproc;
+	size_t nb_process;
+	proc_t proc_info[NB_MAX_PROCESS];
 
-typedef struct machine_info
-{
-  size_t size_memorie;
-  char *name;
+	size_t size_memorie;
+	char name[200];
+}proc_info_t;
 
-}machine_info_t;
+proc_info_t *capteur();
 
-long unsigned int get_uptime();
+void affiche_mytop(proc_info_t *m);
 
-void process_value(long pid);
+void free_proc(proc_info_t *m);
 
 #endif
